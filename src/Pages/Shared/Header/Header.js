@@ -14,7 +14,10 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         {
             user?.uid ?
+               <>
+                     <li><Link to='/myOrders'>Dashboard</Link></li>
                 <button className='btn btn-secondary' onClick={handleLogOut}>Logout</button>
+               </>
                 :
                 <>
                     <li><Link to='/login'>Login</Link></li>

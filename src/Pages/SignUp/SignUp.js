@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
+
     const { createUser, updateUser } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
@@ -19,7 +20,7 @@ const SignUp = () => {
                 }
                 updateUser(profile)
                     .then(() => {
-
+                        savedUser(data.name, data.email, data.user)
                     })
                     .catch(error => console.log(error))
             })
@@ -27,6 +28,22 @@ const SignUp = () => {
                 console.log(error)
                 setErrorMessage(error.message)
             })
+    }
+
+
+    const savedUser = (name, email, role) => {
+        const user = {name, email, role }
+        fetch(`http://localhost:5000/users/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
     }
     return (
         <div className='max-w-[1440px] mx-auto px-2'>
@@ -57,8 +74,8 @@ const SignUp = () => {
                                 <span className="label-text">Who are you?</span>
                             </label>
                             <select {...register('user', { required: 'selection option is required' })} className="select select-bordered w-full">
-                                <option defaultValue>Seller</option>
-                                <option>Buyer</option>
+                                <option>User</option>
+                                <option>Seller</option>
                             </select>
                         </div>
                         <div className="form-control">

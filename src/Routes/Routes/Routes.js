@@ -1,4 +1,6 @@
+import DashboardLayout from "../../layout/DashboardLayout";
 import Cars from "../../Pages/Cars/Cars";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../layout/Main");
@@ -21,6 +23,13 @@ const routes = createBrowserRouter([
             {
                 path: '/cars/brand/:id', element: <Cars></Cars>,
                 loader: ({params}) => fetch(`http://localhost:5000/cars/brand/${params.id}`)
+            }
+        ]
+    },
+    {
+        path:'/myOrders', element: <DashboardLayout></DashboardLayout>, children: [
+            {
+                path: '/myOrders', element: <MyOrders></MyOrders>
             }
         ]
     }
