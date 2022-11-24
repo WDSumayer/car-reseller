@@ -1,6 +1,6 @@
 .hero-slider{
-    border-top:7px solid rgb(251, 148, 4);
-    border-bottom:7px solid rgb(251, 148, 4);
+    border-top:7px solid orange;
+    border-bottom:7px solid orange;
     height: 700px;
     width: 100%;
     background-image:url(https://i.ibb.co/z5S6jrv/blue-sport-sedan-parked-yard.jpg);
@@ -17,8 +17,8 @@
     width: 100%;
     left: 0;
     top: 0;
-    opacity: .5;
-    background-color: #000;
+   opacity: .3;
+   background-color: #000;
    
     z-index: -1;
 }
@@ -35,5 +35,5 @@
     border: 0;
 }
 .btn-controll:hover{
-    background-color:rgb(251, 148, 4); ;
+    background-color:#002072;
 }

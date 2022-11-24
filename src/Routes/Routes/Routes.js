@@ -1,3 +1,5 @@
+import Cars from "../../Pages/Cars/Cars";
+
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../layout/Main");
 const { default: Home } = require("../../Pages/Home/Home/Home");
@@ -15,6 +17,10 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/signup', element: <SignUp></SignUp>
+            },
+            {
+                path: '/cars/brand/:id', element: <Cars></Cars>,
+                loader: ({params}) => fetch(`http://localhost:5000/cars/brand/${params.id}`)
             }
         ]
     }

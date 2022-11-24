@@ -1,0 +1,41 @@
+[
+    {
+        "category_id": "637f1a23b8fd403ed5f75dd4",
+        "img": "https://i.ibb.co/yyC4frs/app-thumb-480x480.jpg",
+        "name": "Hyundai Creta.",
+        "seller_name": "ertugrul",
+        "brand_name": "Hyundai",
+        "location": "Dhaka",
+        "resale_price": "1200",
+        "original_price": "2400",
+        "posted_date": "",
+        "years_of_use": "5",
+        "seller_email": "ertugrul@gazi.com"
+    },
+    {
+        "category_id": "637f1a23b8fd403ed5f75dd5",
+        "img": "https://i.ibb.co/PwnDP8x/85cb42b8f55d11e6a79afc8-mobile-gallery-large.jpg",
+        "name": "Toyota Creta.",
+        "seller_name": "john",
+        "brand_name": "Toyota",
+        "location": "Jashore",
+        "resale_price": "1300",
+        "original_price": "2600",
+        "posted_date": "",
+        "years_of_use": "5",
+        "seller_email": "john@doe.com"
+    },
+    {
+        "category_id": "637f1a23b8fd403ed5f75dd6",
+        "img": "https://i.ibb.co/yyC4frs/app-thumb-480x480.jpg",
+        "name": "Hyundai Creta.",
+        "seller_name": "kerry",
+        "brand_name": "Volkswagen",
+        "location": "Kushtia",
+        "resale_price": "1400",
+        "original_price": "2800",
+        "posted_date": "",
+        "years_of_use": "5",
+        "seller_email": "john@kerry.com"
+    }
+]

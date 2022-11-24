@@ -1,0 +1,21 @@
+.brand-btn{
+    box-shadow: 0 5px 19px -4px rgb(192, 192, 192);
+    height: auto;
+    width: 100%;
+    color:#444;
+    background-color: transparent;
+    border:0;
+    padding:35px;
+    font-size: 40px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 11px;
+    transition: .3s;
+}
+.brand-btn:hover{
+    background-color: transparent;
+    box-shadow: 0 0 19px -4px #001c5795;
+    
+}
