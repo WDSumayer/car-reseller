@@ -31,6 +31,20 @@ const AllSellers = () => {
         })
     }
 
+    const handleDeleteSeller = (id) => {
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.deletedCount > 0){
+                refetch()
+                
+            }
+        })
+    }
+
     if(isLoading){
         return <Loading></Loading>
     }
@@ -56,11 +70,11 @@ const AllSellers = () => {
         <td>{seller.name}</td>
         <td>{seller.email}</td>
         <td>{  seller.status === 'Verified' ?
-                <span className='text-green-700'>Verified</span>
+                <span className='text-green-600 font-semibold'>Verified</span>
                 :
                 <button onClick={() => handleVerify(seller._id)} className='btn btn-xs btn-accent'>verify</button>
             }</td>
-        <td><button className='btn btn-xs btn-accent'>Delete</button></td>
+        <td><button onClick={() => handleDeleteSeller(seller._id)} className='btn btn-sm rounded-sm btn-error text-white'>Delete</button></td>
       </tr>)
       }
      

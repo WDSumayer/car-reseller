@@ -4,7 +4,7 @@ import Loading from '../../../components/Loading/Loading';
 
 const AllBuyers = () => {
 
-    const {data:buyers = [], isLoading} = useQuery({ 
+    const {data:buyers = [], isLoading, refetch} = useQuery({ 
         queryKey: ['buyers'], 
         queryFn: async () => {
           
@@ -18,6 +18,20 @@ const AllBuyers = () => {
         }
        
     })
+
+    const handleDeleteBuyers = (id) => {
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.deletedCount > 0){
+                refetch()
+                
+            }
+        })
+    }
     
 
 if(isLoading){
@@ -42,7 +56,7 @@ if(isLoading){
      <th>{i+1}</th>
      <td>{buyer.name}</td>
      <td>{buyer.email}</td>
-     <td><button className='btn btn-xs btn-accent'>Delete</button></td>
+     <td><button onClick={() => handleDeleteBuyers(buyer._id)} className='btn btn-sm rounded-sm btn-error text-white'>Delete</button></td>
    </tr>)
    }
   
