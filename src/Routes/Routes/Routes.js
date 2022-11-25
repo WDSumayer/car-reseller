@@ -1,8 +1,11 @@
 import DashboardLayout from "../../layout/DashboardLayout";
 import Cars from "../../Pages/Cars/Cars";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import AdminPrivateRoute from "../PrivateRoutes/AdminPrivateRoute";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import SellerPrivateRoute from "../PrivateRoutes/SellerPrivateRoute";
 
@@ -40,6 +43,12 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/myOrders/myProducts', element: <SellerPrivateRoute><MyProducts></MyProducts></SellerPrivateRoute>
+            },
+            {
+                path: '/myOrders/allSellers', element: <AdminPrivateRoute><AllSellers></AllSellers></AdminPrivateRoute>
+            },
+            {
+                path: '/myOrders/allBuyers', element: <AdminPrivateRoute><AllBuyers></AllBuyers></AdminPrivateRoute>
             }
         ]
     }

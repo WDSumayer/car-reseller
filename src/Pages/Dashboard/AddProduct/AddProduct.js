@@ -1,6 +1,7 @@
 import moment from 'moment/moment';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
@@ -8,11 +9,31 @@ const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
+    const navigate = useNavigate()
+    const [brands, setBrands] = useState([])
+    useEffect(() => {
+        fetch(`http://localhost:5000/categories`)
+        .then(res => res.json())
+        .then(data => {
+            setBrands(data)
+        })
+    }, [])
+
+
+
+
+
+
+
     const date = moment().format('MMMM Do YYYY, h:mm:ss a');
     const handleAddProduct = (data) => {
        
+        const brandName = data.brandName
+        const selectedBrand = brands.find(brand => brand.brand_name === brandName)
+        console.log(selectedBrand._id)
+
         const image = data.image[0]
-        console.log(image)
+        
         const formData = new FormData();
         formData.append('image', image)
         const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
@@ -23,13 +44,47 @@ const AddProduct = () => {
             .then((res) => res.json())
             .then(imgData => {
                 console.log(imgData)
+                if(imgData.success){
+                    const product = {
+                        img: imgData.data.url,
+                        category_id: selectedBrand._id,
+                        name: data.productName,
+                        seller_name: data.name,
+                        brand_name: data.brandName,
+                        resale_price: data.price,
+                        original_price: data.oldPrice,
+                        posted_date: date,
+                        years_of_use: data.usedYears,
+                        location: data.location,
+                        seller_email: data.email,
+                        condition: data.condition,
+                        status: "Available"
+                    }
+
+                    fetch('http://localhost:5000/cars', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                           
+            
+                        },
+                        body: JSON.stringify(product)
+                    })
+                    .then(res => {
+                       
+            
+                        return res.json()
+                    })
+                    .then(result => {
+                        console.log(result)
+
+                        navigate('/myOrders/myProducts')
+                    })
+                }
             })
        
 
 
-        // const formData = new FormData()
-        // formData.append('image', image)
-        // const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
 
 
        
@@ -82,11 +137,20 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
+                        <span className="label-text">Years of Use</span>
+                    </label>
+                    <input type="text" {...register("usedYears", { required: 'usedYears is required' })} className="input input-bordered" />
+                    {errors.usedYears && <p className='text-red-500'>{errors.usedYears?.message}</p>}
+                </div>
+                <div className="form-control">
+                    <label className="label">
                         <span className="label-text">Brand Name</span>
                     </label>
                     <select {...register("brandName")} className="select select-bordered w-full">
-                        <option disabled selected>Who shot first?</option>
                        
+                       {
+                        brands.map(brand =>  <option key={brand._id} value={brand.brand_name}>{brand.brand_name}</option>)
+                       }
                     </select>
                 </div>
                 <div className="form-control">
