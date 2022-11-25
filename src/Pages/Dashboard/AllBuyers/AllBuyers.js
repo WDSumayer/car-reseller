@@ -18,6 +18,7 @@ const AllBuyers = () => {
         }
        
     })
+    
 
 if(isLoading){
     return <Loading></Loading>
