@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
+import useSeller from '../Hooks/useSeller';
 import Header from '../Pages/Shared/Header/Header';
 
 const DashboardLayout = () => {
+  const {user} = useContext(AuthContext)
+  const [isSeller] = useSeller(user?.email)
     const dashboardMenu = <>
         <li><Link to='/myOrders'>My Orders</Link></li>
-        <li><Link to='/two'>itemtwo</Link></li>
+        {
+          isSeller && 
+       <>
+           <li><Link to='/myOrders/myProducts'>My Products</Link></li>
+        <li><Link to='/myOrders/addProduct'>Add A Products</Link></li>
+       </>
+        }
     </>
     return (
         <div>
             <Header></Header>
-            <div className="drawer">
+            <div className="drawer max-w-[1440px] mx-auto px-2">
   <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" /> 
   <div className="drawer-content flex flex-col">
   

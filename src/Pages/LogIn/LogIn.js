@@ -1,18 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const LogIn = () => {
     const {logIn} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
     const handleLogIn = data => {
         setErrorMessage('')
         logIn(data.email, data.password)
         .then(result => {
             const user = result.user
             console.log(user)
+            navigate(from, {replace: true})
         })
         .catch(error => {
             console.log(error)

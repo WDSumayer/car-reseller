@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CarCard = ({car}) => {
+const CarCard = ({car, setBookingInfo}) => {
     const {img, name, seller_name, location, resale_price, original_price, years_of_use, posted_date} = car
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
@@ -17,7 +17,8 @@ const CarCard = ({car}) => {
     <p className='text-lg'>Location: {location}</p>
     <p className='text-lg'>Poste in: {posted_date}</p>
     <div className="card-actions">
-      <button className="btn btn-primary">Book Now</button>
+    <label onClick={setBookingInfo(car)} htmlFor="booking-modal" className="btn btn-primary">Book Now</label>
+      
     </div>
   </div>
 </div>

@@ -1,6 +1,10 @@
 import DashboardLayout from "../../layout/DashboardLayout";
 import Cars from "../../Pages/Cars/Cars";
+import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import SellerPrivateRoute from "../PrivateRoutes/SellerPrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../layout/Main");
@@ -21,15 +25,21 @@ const routes = createBrowserRouter([
                 path: '/signup', element: <SignUp></SignUp>
             },
             {
-                path: '/cars/brand/:id', element: <Cars></Cars>,
+                path: '/cars/brand/:id', element: <PrivateRoutes><Cars></Cars></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/cars/brand/${params.id}`)
             }
         ]
     },
     {
-        path:'/myOrders', element: <DashboardLayout></DashboardLayout>, children: [
+        path:'/myOrders', element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>, children: [
             {
                 path: '/myOrders', element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/myOrders/addProduct', element: <SellerPrivateRoute><AddProduct></AddProduct></SellerPrivateRoute>
+            },
+            {
+                path: '/myOrders/myProducts', element: <SellerPrivateRoute><MyProducts></MyProducts></SellerPrivateRoute>
             }
         ]
     }
