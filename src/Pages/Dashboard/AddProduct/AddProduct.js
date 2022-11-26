@@ -147,7 +147,7 @@ const AddProduct = () => {
                         <span className="label-text">Brand Name</span>
                     </label>
                     <select {...register("brandName")} className="select select-bordered w-full">
-                       
+                    <option disabled selected>Choose Brand Name</option>
                        {
                         brands.map(brand =>  <option key={brand._id} value={brand.brand_name}>{brand.brand_name}</option>)
                        }
@@ -158,7 +158,7 @@ const AddProduct = () => {
                         <span className="label-text">Condition</span>
                     </label>
                     <select {...register("condition")} className="select select-bordered w-full">
-                        <option>Excellent</option>
+                        <option selected>Excellent</option>
                         <option>Good</option>
                         <option>Fair</option>
                        

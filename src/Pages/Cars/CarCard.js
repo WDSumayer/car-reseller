@@ -6,8 +6,8 @@ import useAdmin from '../../Hooks/useAdmin';
 
 const CarCard = ({car, setBookingInfo}) => {
   const {user} = useContext(AuthContext)
-    const [isAdmin] = useAdmin(user?.email)
-    const {img, name, seller_name, location, resale_price, original_price, years_of_use, posted_date, seller_email} = car
+  const {img, name, seller_name, location, resale_price, original_price, years_of_use, posted_date, seller_email} = car
+  const [isAdmin] = useAdmin(user?.email)
 
     const {data:status = [], isLoading} = useQuery({ 
       queryKey: ['status', seller_email], 
@@ -40,7 +40,7 @@ const CarCard = ({car, setBookingInfo}) => {
     <p className='text-lg'>Location: {location}</p>
     <p className=''>Posted in: {posted_date}</p>
     <div className="card-actions">
-    <label onClick={setBookingInfo(car)} htmlFor="booking-modal" className={isAdmin ? "btn-disabled btn" : "btn btn-primary"}>Book Now</label>
+    <label onClick={() => setBookingInfo(car)} htmlFor="modalBooking" className="btn btn-primary">Book Now</label>
       
     </div>
   </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MyOrderCard = ({order}) => {
-    const {img,product,price} = order
+    const {img,product,price, status} = order
     return (
        
             
@@ -14,11 +14,17 @@ const MyOrderCard = ({order}) => {
                  <div className="card-body items-center text-center">
                    <h2 className="card-title">{product}</h2>
                    <p className='text-lg'>Price: $ {price}</p>
-                   <p>{order._id}</p>
                    <div className="card-actions w-full">
-                     <Link to={`/myOrders/payment/${order._id}`}>
-                     <button className="btn btn-primary rounded-none w-full">Pay Now</button>
-                     </Link>
+                     {
+                      status === "Available" ?
+                      <Link className='w-full' to={`/myOrders/payment/${order._id}`}>
+                      <button className="btn btn-primary rounded-none w-full">
+                      Pay Now
+                      </button>
+                      </Link>
+                      :
+                      <p className='text-green-700 text-lg'>Paid</p>
+                     }
                    </div>
                  </div>
                </div>

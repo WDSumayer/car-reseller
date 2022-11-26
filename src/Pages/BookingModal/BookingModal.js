@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const BookingModal = ({ bookingInfo, setBookingInfo }) => {
     const {user} = useContext(AuthContext)
-    const { img, name, seller_name, location, resale_price, original_price, years_of_use, posted_date,_id } = bookingInfo
+    const { img, name, seller_name, location, resale_price, original_price, years_of_use, posted_date,_id, status } = bookingInfo
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
+    
     const handleBooking = e => {
         e.preventDefault()
         const form = e.target;
@@ -14,7 +17,7 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
         const price = form.price.value;
         const phone = form.phone.value;
         const orders ={
-            name, email, product, price, phone,img,car_id: _id
+            name, email, product, price, phone,img,car_id: _id, status
         }
         fetch(`http://localhost:5000/orders`, {
             method: "PUT",
@@ -39,35 +42,36 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
     }
     return (
         <div>
-
-            <input type="checkbox" id="booking-modal" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box relative">
-                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <form onSubmit={handleBooking}>
+            
+<input type="checkbox" id="modalBooking" className="modal-toggle" />
+<div className="modal">
+  <div className="modal-box relative">
+    <label htmlFor="modalBooking" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    
+    <form onSubmit={handleBooking}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Name</span>
                             </label>
-                            <input type="text" name='name' defaultValue={user?.displayName} readOnly className="input input-bordered" />
+                            <input type="text" name='name' value={user?.displayName} readOnly className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Email</span>
                             </label>
-                            <input type="email" name='email' defaultValue={user?.email} readOnly className="input input-bordered" />
+                            <input type="email" name='email' value={user?.email} readOnly className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Product</span>
                             </label>
-                            <input type="text" name='product' defaultValue={name} readOnly className="input input-bordered" />
+                            <input type="text" name='product' value={name} readOnly className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="text" name='price' defaultValue={resale_price} readOnly className="input input-bordered" />
+                            <input type="text" name='price' value={resale_price} readOnly className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -78,8 +82,10 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
                         <input type='submit' value='submit' className='btn btn-primary w-full'></input>
                         
                     </form>
-                </div>
-            </div>
+   
+  </div>
+</div>
+         
         </div>
     );
 };

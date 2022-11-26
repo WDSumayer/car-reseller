@@ -14,7 +14,7 @@ const Payment = () => {
            <p className='text-2xl'>Please pay <strong>$ {order.price}</strong> for this product. </p>
            <div className='border w-full py-12 px-3 mt-12'>
            <Elements stripe={stripePromise}>
-      <CheckoutForm />
+      <CheckoutForm order={order} />
     </Elements>
            </div>
         </div>
