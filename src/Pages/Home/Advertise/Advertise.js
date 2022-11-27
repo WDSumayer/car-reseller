@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loading from '../../../components/Loading/Loading';
 import AdvertiseCard from './AdvertiseCard';
 
 const Advertise = () => {
@@ -17,13 +18,16 @@ const Advertise = () => {
         }
        
     })
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     const availableAdvgProducts = addvertises.filter(addvertise => addvertise.status !== "Paid")
 
     return (
         <div className={addvertises.length ? "block" : "hidden"}>
            <div className='py-14'>
-           <div className='grid grid-cols-1 md:grid-cols-2 gap-14'>
+           <div className='grid grid-cols-1 md:grid-cols-3 gap-14'>
                 {
                     availableAdvgProducts.map(availableAdvgProduct => <AdvertiseCard key={availableAdvgProduct._id} availableAdvgProduct={availableAdvgProduct}></AdvertiseCard>)
                 }

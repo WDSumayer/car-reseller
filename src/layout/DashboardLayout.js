@@ -1,6 +1,7 @@
 
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import Loading from '../components/Loading/Loading';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 
@@ -9,8 +10,8 @@ import Header from '../Pages/Shared/Header/Header';
 
 const DashboardLayout = () => {
   const {user} = useContext(AuthContext)
-  const [isSeller] = useSeller(user?.email)
-  const [isAdmin] = useAdmin(user?.email)
+  const [isSeller, isSellerLoading] = useSeller(user?.email)
+  const [isAdmin, isAdminLoading] = useAdmin(user?.email)
     const dashboardMenu = <>
         <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders'>My Orders</Link></li>
         {
@@ -29,6 +30,10 @@ const DashboardLayout = () => {
       }
 
     </>
+
+    if(isAdminLoading || isSellerLoading) {
+      return <Loading></Loading>
+    }
     return (
         <div>
             <Header></Header>

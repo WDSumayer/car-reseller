@@ -50,7 +50,7 @@ console.log(product)
                  <div className="card-body">
                    <h2 className="card-title">{productName}</h2>
                    <p className='text-lg'>Price: $ {price}</p>
-                   <p className='text-lg'>{status}</p>
+                   <p className='text-lg font-medium'>{status === "Paid" ? "Sold" : status}</p>
                    <div className="card-actions w-full">
                      <button onClick={handleAdd} className={status === "Paid" ? "py-2 px-4 rounded-none w-full mb-3 btn-disabled" : "bg-primary py-2 px-4 text-white w-full mb-3"}>{loading ? <SmallLoading></SmallLoading> : "Advertige"}</button>
                      <button onClick={() => handleDeleteCar(product)} className="border border-gray-700 py-2 px-4 text-black w-full">Delete</button>
