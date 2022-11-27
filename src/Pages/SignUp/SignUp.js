@@ -4,10 +4,11 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import SmallLoading from '../../components/SmallLoading/SmallLoading';
 
 const SignUp = () => {
     
-    const { createUser, updateUser, googleSignIn } = useContext(AuthContext)
+    const { createUser, updateUser, googleSignIn, loading } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -66,21 +67,21 @@ const SignUp = () => {
                 <div>
                     <img alt='' src='https://img.freepik.com/free-vector/signing-contract-concept-illustration_114360-4889.jpg?w=826&t=st=1669293599~exp=1669294199~hmac=1b010737dcd8ce43fd45b9684aae911d5168729451acc91ff2ec3dc22367978c'></img>
                 </div>
-                <div className='px-14'>
+                <div className='px-5 lg:px-14'>
                     <h2 className="text-5xl font-bold mb-7">Sign Up</h2>
                     <form onSubmit={handleSubmit(handleSignUp)}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-lg">Name</span>
                             </label>
-                            <input {...register('name', { required: 'name is required' })} type="text" placeholder="name" className="input input-bordered" />
+                            <input {...register('name', { required: 'name is required' })} type="text" placeholder="name" className="input input-bordered rounded-sm h-auto py-3" />
                             {errors.name && <span className='text-red-500'>{errors.name?.message}</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-lg">Email</span>
                             </label>
-                            <input {...register('email', { required: 'email is required' })} type="email" placeholder="email" className="input input-bordered" />
+                            <input {...register('email', { required: 'email is required' })} type="email" placeholder="email" className="input input-bordered rounded-sm h-auto py-3" />
                             {errors.email && <span className='text-red-500'>{errors.email?.message}</span>}
 
                         </div>
@@ -88,9 +89,9 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text text-lg">Who are you?</span>
                             </label>
-                            <select {...register('user', { required: 'selection option is required' })} className="select select-bordered w-full">
-                                <option>User</option>
-                                <option>Seller</option>
+                            <select {...register('user', { required: 'selection option is required' })} className="select select-bordered w-full rounded-sm h-auto py-3">
+                                <option className='text-lg font-semibold'>User</option>
+                                <option className='text-lg font-semibold'>Seller</option>
                             </select>
                         </div>
                         <div className="form-control">
@@ -101,20 +102,21 @@ const SignUp = () => {
                                 required: 'password is required',
                                 minLength: { value: 6, message: "must be at least 6 character" },
                                 pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'password pattern must be strong' }
-                            })} type="password" placeholder="password" className="input input-bordered" />
+                            })} type="password" placeholder="password" className="input input-bordered rounded-sm h-auto py-3" />
                             {errors.password && <span className='text-red-500'>{errors.password?.message}</span>}
                         </div>
 
                         {
                             errorMessage && <p className='text-red-500'>{errorMessage}</p>
                         }
-
-                        <input className='btn btn-primary w-full mt-7' type="submit" value='Sign up' />
+                        
+                        <button type='submit' className='btn btn-primary w-full mt-7 rounded-sm h-auto py-3'>{loading ? <SmallLoading></SmallLoading> : "Sign up"}</button>
+                       
                         <p className='mt-1'>Already have an account? Please <Link className='text-primary' to='/login'>LogIn</Link></p>
                     </form>
-                    <div>
+                    <div className='w-full border rounded-sm p-5 mt-4'>
                     <p className='text-lg text-center'>OR</p>
-                        <button onClick={googleSigning} className='w-full btn mt-2'><FaGoogle></FaGoogle></button>
+                        <button onClick={googleSigning} className='w-full btn mt-2 rounded-sm h-auto py-3'>{loading ? <SmallLoading></SmallLoading> : <FaGoogle></FaGoogle>}</button>
                     </div>
                 </div>
             </div>

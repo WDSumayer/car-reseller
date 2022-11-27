@@ -28,12 +28,17 @@ const MyOrders = () => {
 
     return (
        <div>
-         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-14'>
+        {
+            orders.length ?
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-14'>
             {
                 orders.map(order => <MyOrderCard key={order._id} order={order}></MyOrderCard>)
             }
             
         </div>
+        :
+        <h1 className='text-center text-4xl pt-5'>You have no orders here......</h1>
+        }
        </div>
     );
 };

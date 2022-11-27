@@ -11,23 +11,23 @@ const Header = () => {
         .catch(err => console.log(err))
     }
     const menuItems = <>
-        <li><Link className='px-4 py-3' to='/'>Home</Link></li>
+        <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/'>Home</Link></li>
         {
             user?.uid ?
                <>
-                     <li><Link className='px-4 py-3' to='/myOrders'>Dashboard</Link></li>
-                <button className='btn btn-secondary' onClick={handleLogOut}>Logout</button>
+                     <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/myOrders'>Dashboard</Link></li>
+                <button className='btn border-none bg-[#ddd] text-black hover:bg-[#eee] text-lg rounded-sm' onClick={handleLogOut}>Logout</button>
                </>
                 :
                 <>
-                    <li><Link className='px-4 py-3' to='/login'>Login</Link></li>
-                    <li><Link className='px-4 py-3' to='/signup'>Signup</Link></li>
+                    <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/login'>Login</Link></li>
+                    <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/signup'>Signup</Link></li>
                 </>
         }
 
     </>
     return (
-        <div>
+        <div className='py-3'>
             <div className='max-w-[1440px] mx-auto px-2'>
                 <div className="navbar">
                     <div className="navbar-start">
@@ -41,9 +41,9 @@ const Header = () => {
                                 }
                             </ul>
                         </div>
-                        <Link to='/' className="btn btn-ghost normal-case text-xl">Car-Reseller</Link>
+                        <Link to='/' className="btn h-auto btn-ghost normal-case text-3xl hover:bg-white font-black">Car-<span className='border-2 border-primary p-3 text-primary rounded-md'>Reseller</span></Link>
                     </div>
-                    <div className="navbar-end hidden lg:flex">
+                    <div className="navbar-end hidden lg:flex items-center">
                         <ul className="menu-horizontal p-0">
                             {
                                 menuItems

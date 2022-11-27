@@ -34,7 +34,7 @@ const DashboardLayout = () => {
             <Header></Header>
             <div className="drawer max-w-[1440px] mx-auto px-2">
   <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" /> 
-  <div className="drawer-content flex flex-col">
+  <div className="drawer-content flex flex-col px-3">
   
     <div className="w-full navbar flex justify-center">
       <div className="flex-none lg:hidden">

@@ -25,11 +25,16 @@ const MyProducts = () => {
     }
     return (
         <div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-14'>
+           {
+                products.length ? 
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-14'>
                 {
                     products.map(product => <MyProductCard key={product._id} product={product}></MyProductCard>)
                 }
             </div>
+            :
+            <h1 className='text-4xl text-center pt-5'>You have no product here....</h1>
+           }
         </div>
     );
 };

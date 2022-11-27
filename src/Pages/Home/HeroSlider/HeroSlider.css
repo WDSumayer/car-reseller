@@ -1,27 +1,40 @@
 .hero-slider{
-    border-top:7px solid orange;
-    border-bottom:7px solid orange;
+   
     height: 700px;
     width: 100%;
-    background-image:url(https://i.ibb.co/z5S6jrv/blue-sport-sedan-parked-yard.jpg);
+    /* background-image:url(); */
     background-position: center;
     background-size:cover;
     background-repeat:no-repeat;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
-.hero-slider::after{
+
+.slider-img{
+    position: absolute;
+    width: 105%;
+    height: 101%;
+    object-fit: cover;
+    filter: blur(9px);
+    top:0;
+    left:0;
+    z-index: -1;
+}
+
+
+/* .hero-slider::after{
     position: absolute;
     content: "";
     height: 100%;
     width: 100%;
     left: 0;
     top: 0;
-   opacity: .5;
+   opacity: 0;
    background-color: #000;
    
     z-index: -1;
-}
+} */
 .hero-slider img::before{
    
 
@@ -37,6 +50,12 @@
 }
 .btn-controll:hover{
     background-color:#002072;
+}
+
+
+.test-h{
+   background: rgba(0,0,0,0.5);
+    
 }
 
 
