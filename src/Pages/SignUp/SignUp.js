@@ -8,7 +8,7 @@ import SmallLoading from '../../components/SmallLoading/SmallLoading';
 
 const SignUp = () => {
     
-    const { createUser, updateUser, googleSignIn, loading } = useContext(AuthContext)
+    const { createUser, updateUser, googleSignIn, loading,setLoading, googleLoading } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -43,6 +43,7 @@ const SignUp = () => {
             .catch(error => {
                 console.log(error)
                 setErrorMessage(error.message)
+                setLoading(false)
             })
     }
 
@@ -116,7 +117,7 @@ const SignUp = () => {
                     </form>
                     <div className='w-full border rounded-sm p-5 mt-4'>
                     <p className='text-lg text-center'>OR</p>
-                        <button onClick={googleSigning} className='w-full btn mt-2 rounded-sm h-auto py-3'><FaGoogle></FaGoogle></button>
+                        <button onClick={googleSigning} className='w-full btn mt-2 rounded-sm h-auto py-3'>{googleLoading ? <SmallLoading></SmallLoading> : <FaGoogle></FaGoogle>}</button>
                     </div>
                 </div>
             </div>

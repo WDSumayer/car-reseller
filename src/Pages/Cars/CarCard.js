@@ -3,11 +3,13 @@ import React, { useContext } from 'react';
 import { FaCircle } from "react-icons/fa";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
+import useSeller from '../../Hooks/useSeller';
 
 const CarCard = ({car, setBookingInfo}) => {
   const {user} = useContext(AuthContext)
   const {img, name, seller_name, location, resale_price, original_price, years_of_use, posted_date, seller_email} = car
   const [isAdmin] = useAdmin(user?.email)
+  const [isSeller] = useSeller(user?.email)
 
     const {data:status = [], isLoading} = useQuery({ 
       queryKey: ['status', seller_email], 
@@ -40,7 +42,7 @@ const CarCard = ({car, setBookingInfo}) => {
     <p className='text-lg'>Location: {location}</p>
     <p className=''>Posted in: {posted_date}</p>
     <div className="card-actions">
-    <label onClick={() => setBookingInfo(car)} htmlFor="modalBooking" className="btn btn-primary">Book Now</label>
+    <label onClick={() => setBookingInfo(car)} htmlFor="modalBooking" className={isAdmin || isSeller ? "btn btn-disabled" : "btn btn-primary"}>Book Now</label>
       
     </div>
   </div>

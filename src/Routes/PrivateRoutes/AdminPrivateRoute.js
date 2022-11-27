@@ -5,10 +5,10 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
 
 const AdminPrivateRoute = ({children}) => {
-    const {user, loading} = useContext(AuthContext)
+    const {user, loading, googleLoading} = useContext(AuthContext)
     const [isAdmin, isAdminLoading] = useAdmin(user?.email)
     const location = useLocation()
-    if(loading || isAdminLoading){
+    if(loading || isAdminLoading || googleLoading){
      return <Loading></Loading>
     }
     if(user && isAdmin){

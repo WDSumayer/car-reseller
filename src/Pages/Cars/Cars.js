@@ -14,7 +14,7 @@ const Cars = () => {
         return <Loading></Loading>
     }
     return (
-        <div className='max-w-[1440px] mx-auto px-2'>
+        <div className='max-w-[1440px] mx-auto px-2 py-24'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
             {
                 availableCars.map(car => <CarCard key={car._id} car={car} setBookingInfo={setBookingInfo}></CarCard>)

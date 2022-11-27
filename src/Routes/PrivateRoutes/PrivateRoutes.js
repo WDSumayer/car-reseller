@@ -4,9 +4,9 @@ import Loading from '../../components/Loading/Loading';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const PrivateRoutes = ({children}) => {
-    const {user,loading} = useContext(AuthContext)
+    const {user,loading, googleLoading} = useContext(AuthContext)
     const location = useLocation()
-    if(loading){
+    if(loading || googleLoading){
         return <Loading></Loading>
     }
     if(!user){

@@ -9,7 +9,7 @@ const Footer = () => {
             <div className='max-w-[1440px] mx-auto px-2 py-14'>
                 <div className='flex flex-col md:flex-row justify-center md:justify-around'>
                     <div className='footer-logo mb-5 md:mb-0'>
-                    <Link to='/' className="btn h-auto btn-ghost text-white normal-case text-4xl hover:bg-trasparent font-black">Car<span className='font-semibold'>Reseller</span></Link>
+                    <Link to='/' className="btn h-auto btn-ghost text-white normal-case text-4xl hover:bg-trasparent block font-black">Car<span className='font-semibold'>Reseller</span></Link>
                     </div>
                     <div className='social-platform flex justify-center text-white text-4xl items-center'>
                         <FaFacebookSquare className='mr-2'></FaFacebookSquare>
