@@ -1,15 +1,46 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const LogIn = () => {
-    const {logIn} = useContext(AuthContext)
+    const {logIn, googleSignIn} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/';
+   
+   const provider = new GoogleAuthProvider()
+    const googleSigning = () => {
+        googleSignIn(provider)
+        .then(result => {
+            const user = result.user
+            savedUser(user.displayName, user.email, "User")
+            console.log(user)
+        })
+        .catch(error => console.log(error))
+    }
+   
+    const savedUser = (name, email, role) => {
+        const user = {name, email, role }
+        fetch(`http://localhost:5000/users/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+   
+   
+   
     const handleLogIn = data => {
         setErrorMessage('')
         logIn(data.email, data.password)
@@ -30,12 +61,12 @@ const LogIn = () => {
                     <img alt='' src='https://img.freepik.com/free-vector/signing-contract-concept-illustration_114360-4889.jpg?w=826&t=st=1669293599~exp=1669294199~hmac=1b010737dcd8ce43fd45b9684aae911d5168729451acc91ff2ec3dc22367978c'></img>
                 </div>
                 <div className='px-14'>
-                    <h2 className="text-5xl font-bold">Log in</h2>
+                    <h2 className="text-5xl font-bold mb-7">Log in</h2>
                     <form onSubmit={handleSubmit(handleLogIn)}>
                        
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text text-lg">Email</span>
                             </label>
                             <input {...register('email', { required: 'email is required' })} type="email" placeholder="email" className="input input-bordered" />
                             {errors.email && <span className='text-red-500'>{errors.email?.message}</span>}
@@ -44,7 +75,7 @@ const LogIn = () => {
                       
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text text-lg">Password</span>
                             </label>
                             <input {...register('password', {
                                 required: 'password is required',
@@ -53,14 +84,19 @@ const LogIn = () => {
                             })} type="password" placeholder="password" className="input input-bordered" />
                             {errors.password && <span className='text-red-500'>{errors.password?.message}</span>}
                         </div>
-
+                            
 
                         {
                             errorMessage && <p className='text-red-500'>{errorMessage}</p>
                         }
 
-                        <input className='btn btn-primary w-full' type="submit" value='Log in' />
+                        <input className='btn btn-primary w-full mt-7' type="submit" value='Log in' />
+                        <p className='mt-1'>Don't have any account? Create account <Link className='text-primary' to='/signup'>SignUp</Link></p>
                     </form>
+                    <div>
+                        <p className='text-lg text-center'>OR</p>
+                        <button onClick={googleSigning} className='w-full btn mt-2'><FaGoogle></FaGoogle></button>
+                    </div>
                 </div>
             </div>
         </div>

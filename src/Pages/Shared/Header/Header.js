@@ -11,17 +11,17 @@ const Header = () => {
         .catch(err => console.log(err))
     }
     const menuItems = <>
-        <li><Link to='/'>Home</Link></li>
+        <li><Link className='px-4 py-3' to='/'>Home</Link></li>
         {
             user?.uid ?
                <>
-                     <li><Link to='/myOrders'>Dashboard</Link></li>
+                     <li><Link className='px-4 py-3' to='/myOrders'>Dashboard</Link></li>
                 <button className='btn btn-secondary' onClick={handleLogOut}>Logout</button>
                </>
                 :
                 <>
-                    <li><Link to='/login'>Login</Link></li>
-                    <li><Link to='/signup'>Signup</Link></li>
+                    <li><Link className='px-4 py-3' to='/login'>Login</Link></li>
+                    <li><Link className='px-4 py-3' to='/signup'>Signup</Link></li>
                 </>
         }
 
@@ -29,6 +29,31 @@ const Header = () => {
     return (
         <div>
             <div className='max-w-[1440px] mx-auto px-2'>
+                <div className="navbar">
+                    <div className="navbar-start">
+                        <div className="dropdown">
+                            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 bg-gray-200 w-52">
+                                {
+                                    menuItems
+                                }
+                            </ul>
+                        </div>
+                        <Link to='/' className="btn btn-ghost normal-case text-xl">Car-Reseller</Link>
+                    </div>
+                    <div className="navbar-end hidden lg:flex">
+                        <ul className="menu-horizontal p-0">
+                            {
+                                menuItems
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            {/* <div className='max-w-[1440px] mx-auto px-2'>
                 <div className="navbar">
                     <div className="navbar-start">
                         <div className="dropdown">
@@ -52,8 +77,12 @@ const Header = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
         </div>
+
+
+
+
     );
 };
 

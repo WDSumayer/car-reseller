@@ -19,3 +19,17 @@
     box-shadow: 0 0 19px -4px #001c5795;
     
 }
+
+
+/* x-small device */
+@media only screen and (max-width: 576px) {
+   
+   .brand-btn{
+    font-size: 31px;
+    font-weight: 500;
+    padding:25px;
+    text-transform: lowercase;
+   }
+        
+        
+    }

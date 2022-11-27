@@ -22,11 +22,13 @@ const Advertise = () => {
 
     return (
         <div className={addvertises.length ? "block" : "hidden"}>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-14'>
+           <div className='py-14'>
+           <div className='grid grid-cols-1 md:grid-cols-2 gap-14'>
                 {
                     availableAdvgProducts.map(availableAdvgProduct => <AdvertiseCard key={availableAdvgProduct._id} availableAdvgProduct={availableAdvgProduct}></AdvertiseCard>)
                 }
             </div>
+           </div>
         </div>
     );
 };
