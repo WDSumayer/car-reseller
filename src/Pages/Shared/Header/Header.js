@@ -11,17 +11,18 @@ const Header = () => {
         .catch(err => console.log(err))
     }
     const menuItems = <>
-        <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/'>Home</Link></li>
+        <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/'>Home</Link></li>
+        <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/blog'>Blog</Link></li>
         {
             user?.uid ?
                <>
-                     <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/myOrders'>Dashboard</Link></li>
+                     <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/myOrders'>Dashboard</Link></li>
                 <button className='btn border-none bg-[#ddd] text-black hover:bg-[#eee] text-lg rounded-sm' onClick={handleLogOut}>Logout</button>
                </>
                 :
                 <>
-                    <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/login'>Login</Link></li>
-                    <li className='flex'><Link className='px-4 py-3 text-lg font-normal uppercase hover:text-primary ease-linear duration-300' to='/signup'>Signup</Link></li>
+                    <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/login'>Login</Link></li>
+                    <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/signup'>Signup</Link></li>
                 </>
         }
 
@@ -41,7 +42,7 @@ const Header = () => {
                                 }
                             </ul>
                         </div>
-                        <Link to='/' className="btn h-auto btn-ghost normal-case text-3xl hover:bg-white font-black">Car-<span className='border-2 border-primary p-3 text-primary rounded-md'>Reseller</span></Link>
+                        <Link to='/' className="btn h-auto btn-ghost normal-case text-4xl hover:bg-white font-black">Car<span className='text-primary font-semibold'>Reseller</span></Link>
                     </div>
                     <div className="navbar-end hidden lg:flex items-center">
                         <ul className="menu-horizontal p-0">

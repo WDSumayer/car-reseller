@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../Shared/Footer/Footer';
 import Advertise from '../Advertise/Advertise';
 import Categories from '../Categories/Categories';
 import HeroSlider from '../HeroSlider/HeroSlider';
@@ -10,6 +11,7 @@ const Home = () => {
             <div className='max-w-[1440px] mx-auto px-2'>
             <Advertise></Advertise>
              <Categories></Categories>
+             
             </div>
         </div>
     );

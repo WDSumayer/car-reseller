@@ -1,4 +1,5 @@
 import DashboardLayout from "../../layout/DashboardLayout";
+import Blog from "../../Pages/Blog/Blog";
 import Cars from "../../Pages/Cars/Cars";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
@@ -6,6 +7,7 @@ import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import AdminPrivateRoute from "../PrivateRoutes/AdminPrivateRoute";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import SellerPrivateRoute from "../PrivateRoutes/SellerPrivateRoute";
@@ -31,6 +33,9 @@ const routes = createBrowserRouter([
             {
                 path: '/cars/brand/:id', element: <PrivateRoutes><Cars></Cars></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/cars/brand/${params.id}`)
+            },
+            {
+                path: '/blog', element: <Blog></Blog>
             }
         ]
     },
@@ -56,6 +61,9 @@ const routes = createBrowserRouter([
                 path: '/myOrders/allBuyers', element: <AdminPrivateRoute><AllBuyers></AllBuyers></AdminPrivateRoute>
             }
         ]
+    },
+    {
+        path: '*', element: <ErrorPage></ErrorPage>
     }
 ])
 export default routes;

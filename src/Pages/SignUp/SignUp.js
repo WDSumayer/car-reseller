@@ -62,7 +62,7 @@ const SignUp = () => {
         })
     }
     return (
-        <div className='max-w-[1440px] mx-auto px-2'>
+        <div className='max-w-[1440px] mx-auto px-2 py-20'>
             <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-14'>
                 <div>
                     <img alt='' src='https://img.freepik.com/free-vector/signing-contract-concept-illustration_114360-4889.jpg?w=826&t=st=1669293599~exp=1669294199~hmac=1b010737dcd8ce43fd45b9684aae911d5168729451acc91ff2ec3dc22367978c'></img>
@@ -116,7 +116,7 @@ const SignUp = () => {
                     </form>
                     <div className='w-full border rounded-sm p-5 mt-4'>
                     <p className='text-lg text-center'>OR</p>
-                        <button onClick={googleSigning} className='w-full btn mt-2 rounded-sm h-auto py-3'>{loading ? <SmallLoading></SmallLoading> : <FaGoogle></FaGoogle>}</button>
+                        <button onClick={googleSigning} className='w-full btn mt-2 rounded-sm h-auto py-3'><FaGoogle></FaGoogle></button>
                     </div>
                 </div>
             </div>

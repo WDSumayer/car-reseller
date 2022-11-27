@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Loading from '../../../components/Loading/Loading';
+import './AllSellers.css'
 
 const AllSellers = () => {
 
@@ -52,21 +53,21 @@ const AllSellers = () => {
     return (
         <div>
            <div className="overflow-x-auto">
-  <table className="table table-zebra w-full">
+  <table className="table seller-table w-full">
     
     <thead>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Status</th>
-        <th>Action</th>
+        <th className='bg-primary py-6 text-white'></th>
+        <th className='bg-primary py-6 text-white'>Name</th>
+        <th className='bg-primary py-6 text-white'>Email</th>
+        <th className='bg-primary py-6 text-white'>Status</th>
+        <th className='bg-primary py-6 text-white rounded-none'>Action</th>
       </tr>
     </thead>
     <tbody>
       {
-        sellers.map((seller, i) =>  <tr className={sellers.indexOf(seller) % 2 !== 0 ? "active" : 'undefined'} key={seller._id}>
-        <th>{i+1}</th>
+        sellers.map((seller, i) =>  <tr className={sellers.indexOf(seller) % 2 !== 0 ? "tableActive" : 'undefined'} key={seller._id}>
+        <th className='bg-transparent'>{i+1}</th>
         <td>{seller.name}</td>
         <td>{seller.email}</td>
         <td>{  seller.status === 'Verified' ?

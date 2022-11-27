@@ -6,7 +6,7 @@ import MyProductCard from './MyProductCard';
 
 const MyProducts = () => {
     const {user} = useContext(AuthContext)
-    const {data:products = [], isLoading} = useQuery({ 
+    const {data:products = [], isLoading, refetch} = useQuery({ 
         queryKey: ['products', user?.email], 
         queryFn: async () => {
           
@@ -29,7 +29,7 @@ const MyProducts = () => {
                 products.length ? 
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-14'>
                 {
-                    products.map(product => <MyProductCard key={product._id} product={product}></MyProductCard>)
+                    products.map(product => <MyProductCard key={product._id} product={product} refetch={refetch}></MyProductCard>)
                 }
             </div>
             :
