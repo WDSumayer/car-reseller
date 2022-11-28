@@ -1,17 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import Loading from '../../../components/Loading/Loading';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './AllSellers.css'
 
 const AllSellers = () => {
-
+    const {logOut} = useContext(AuthContext)
     const {data:sellers = [], isLoading, refetch} = useQuery({ 
         queryKey: ['sellers'], 
         queryFn: async () => {
           
-            const res = await fetch('http://localhost:5000/users/sellers')
+            const res = await fetch('http://localhost:5000/users/sellers', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Car-resel-Token')}`
+                }
+            })
             const data = await res.json()
-          
+            if(res.status === 401 || res.status === 403){
+                return logOut()
+              }
             return data
             
          

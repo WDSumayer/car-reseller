@@ -6,13 +6,16 @@ import CarCard from './CarCard'
 
 const Cars = () => {
     const cars = useLoaderData()
-    const navigation = useNavigation()
+    console.log('cars',cars)
     const [bookingInfo, setBookingInfo] = useState(null)
+    const navigation = useNavigation()
 
-    const availableCars = cars.filter(car => car.status !== "Paid")
     if(navigation.state === "loading"){
         return <Loading></Loading>
     }
+
+    const availableCars = cars.filter(car => car.status !== "Paid")
+    
     return (
         <div className='max-w-[1440px] mx-auto px-2 py-24'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>

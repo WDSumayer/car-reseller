@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { FaCircle } from "react-icons/fa";
+import Loading from '../../components/Loading/Loading';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
 import useSeller from '../../Hooks/useSeller';
@@ -25,6 +26,7 @@ const CarCard = ({car, setBookingInfo}) => {
       }
      
   })
+ 
 
     return (
         

@@ -1,18 +1,32 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from 'firebase/auth';
 import SmallLoading from '../../components/SmallLoading/SmallLoading';
+import useToken from '../../Hooks/useToken';
+import toast from 'react-hot-toast';
 
 const LogIn = () => {
     const {logIn, googleSignIn, loading,setLoading, googleLoading} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
+    const[loggedUserEmail, setLoggedUserEmail] = useState('')
+    const [token] = useToken(loggedUserEmail)
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/';
+
+
+    useEffect(() => {
+        if(token){
+            toast.success('log in successfully')
+            navigate(from, {replace: true})
+        }
+    }, [token])
+
+
    
    const provider = new GoogleAuthProvider()
     const googleSigning = () => {
@@ -37,6 +51,7 @@ const LogIn = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            setLoggedUserEmail(email)
         })
     }
    
@@ -48,7 +63,8 @@ const LogIn = () => {
         .then(result => {
             const user = result.user
             console.log(user)
-            navigate(from, {replace: true})
+            setLoggedUserEmail(data.email)
+           
         })
         .catch(error => {
             console.log(error)

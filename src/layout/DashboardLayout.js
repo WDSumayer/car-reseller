@@ -13,7 +13,8 @@ const DashboardLayout = () => {
   const [isSeller, isSellerLoading] = useSeller(user?.email)
   const [isAdmin, isAdminLoading] = useAdmin(user?.email)
     const dashboardMenu = <>
-        <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders'>My Orders</Link></li>
+       <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders'>My Orders</Link></li>
+       
         {
           isSeller && 
        <>

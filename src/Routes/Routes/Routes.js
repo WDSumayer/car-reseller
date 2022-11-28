@@ -8,7 +8,9 @@ import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import AdminPrivateRoute from "../PrivateRoutes/AdminPrivateRoute";
+import BuyerPrivateRoute from "../PrivateRoutes/BuyerPrivateRoute";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import SellerPrivateRoute from "../PrivateRoutes/SellerPrivateRoute";
 
@@ -20,7 +22,8 @@ const { default: SignUp } = require("../../Pages/SignUp/SignUp");
 
 const routes = createBrowserRouter([
     {
-        path: '/', element: <Main></Main>, children: [
+        path: '/', element: <Main></Main>,errorElement: <DisplayError></DisplayError>,
+        children: [
             {
                 path: '/', element: <Home></Home>
             },

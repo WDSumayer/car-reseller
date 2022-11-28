@@ -5,16 +5,22 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import MyOrderCard from './MyOrderCard';
 
 const MyOrders = () => {
-    const {user} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
    
     
     const {data:orders = [], isLoading} = useQuery({ 
         queryKey: ['orders', user?.email], 
         queryFn: async () => {
           
-            const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Car-resel-Token')}`
+                }
+            })
             const data = await res.json()
-          
+            if(res.status === 401 || res.status === 403){
+                return logOut()
+              }
             return data
             
          

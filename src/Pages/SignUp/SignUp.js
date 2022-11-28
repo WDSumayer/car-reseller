@@ -1,16 +1,30 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SmallLoading from '../../components/SmallLoading/SmallLoading';
+import useToken from '../../Hooks/useToken';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
     
     const { createUser, updateUser, googleSignIn, loading,setLoading, googleLoading } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(token){
+            toast.success('user created successfully')
+            navigate('/')
+        }
+    }, [token])
+
+
 
     const provider = new GoogleAuthProvider();
 
@@ -60,6 +74,7 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            setCreatedUserEmail(email)
         })
     }
     return (
