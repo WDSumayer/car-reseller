@@ -7,6 +7,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import SmallLoading from '../../components/SmallLoading/SmallLoading';
 import useToken from '../../Hooks/useToken';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle';
 
 const LogIn = () => {
     const {logIn, googleSignIn, loading,setLoading, googleLoading} = useContext(AuthContext)
@@ -17,7 +18,7 @@ const LogIn = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/';
-
+    useTitle('LogIn')
 
     useEffect(() => {
         if(token){

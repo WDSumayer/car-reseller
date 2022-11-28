@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const BookingModal = ({ bookingInfo, setBookingInfo }) => {
@@ -30,6 +31,7 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
+                toast.success('booking successfully')
                 setBookingInfo('')
                
               }
@@ -79,7 +81,7 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
                             </label>
                             <input type="text" name='phone' className="input input-bordered" />
                         </div>
-                        <input type='submit' value='submit' className='btn btn-primary w-full'></input>
+                        <input type='submit' value='submit' className='btn btn-primary w-full my-5'></input>
                         
                     </form>
    

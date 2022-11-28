@@ -27,7 +27,7 @@ if(isLoading){
             {
                 categories.map(category => 
                <Link to={`/cars/brand/${category._id}`}>
-                     <button className='btn brand-btn'>
+                     <button key={category._id} className='btn brand-btn'>
                     <FaCar className='mr-5 text-primary'></FaCar>
                     {category.brand_name}
                 </button>

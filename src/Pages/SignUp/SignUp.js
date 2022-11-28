@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SmallLoading from '../../components/SmallLoading/SmallLoading';
 import useToken from '../../Hooks/useToken';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle';
 
 const SignUp = () => {
     
@@ -16,7 +17,7 @@ const SignUp = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail)
     const navigate = useNavigate()
-
+    useTitle('SignUp')
     useEffect(() => {
         if(token){
             toast.success('user created successfully')

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import SmallLoading from '../../../components/SmallLoading/SmallLoading';
 
 const MyProductCard = ({product, refetch}) => {
   const [loading, setLoading] = useState(false)
     const {img, resale_price:price, name:productName, status, _id, seller_email, category_id} = product
-console.log(product)
+
     const handleAdd = () => {
       setLoading(true)
       const advgProduct = {
@@ -20,7 +21,10 @@ console.log(product)
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        setLoading(false)
+        if(data.acknowledged){
+          toast.success('add to advertise successfully')
+          setLoading(false)
+        }
       })
     }
 
@@ -43,7 +47,7 @@ console.log(product)
 
     return (
         
-             <div className="bg-base-100 border">
+             <div className="bg-base-100 border hover:border-primary ease-linear duration-300">
                  <figure className="px-8 pt-10">
                    <img src={img} alt="Shoes" className="rounded-none" />
                  </figure>

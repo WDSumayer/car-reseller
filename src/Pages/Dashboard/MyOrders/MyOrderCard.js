@@ -7,7 +7,7 @@ const MyOrderCard = ({order}) => {
        
             
             
-         <div className="bg-base-100 border">
+         <div className="bg-base-100 border rounded-tl-3xl rounded-br-3xl hover:border-primary hover:drop-shadow-2xl ease-linear duration-200">
                  <figure className="px-10 pt-10">
                    <img src={img} alt="Shoes" className="rounded-full" />
                  </figure>

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
@@ -35,7 +36,7 @@ const AllBuyers = () => {
             console.log(data)
             if(data.deletedCount > 0){
                 refetch()
-                
+                toast.success('buyer deleted successfully')
             }
         })
     }
