@@ -1,3 +1,24 @@
+# About this Site
+name: CarReseller
+live link: https://car-reseller-2bb1f.web.app/
+
+1. This site is a second hand product resell site
+2. Tailwind has been used as a css framwork
+3. Daisy Ui has been used as tailwind component library
+4. Mongodb has been used as a database
+5. This is a single page application by react
+
+adminEmail: <ertugrul@gazi.com>
+adminPassword: <Ertugrul@1>
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
