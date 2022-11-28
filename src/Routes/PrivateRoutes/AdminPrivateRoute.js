@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
 
 const AdminPrivateRoute = ({children}) => {
-    const {user, loading, googleLoading} = useContext(AuthContext)
+    const {user, loading, googleLoading, logOut} = useContext(AuthContext)
     const [isAdmin, isAdminLoading] = useAdmin(user?.email)
     const location = useLocation()
     if(loading || isAdminLoading || googleLoading){
@@ -14,6 +14,7 @@ const AdminPrivateRoute = ({children}) => {
     if(user && isAdmin){
         return children
      }
+     logOut()
      return <Navigate to='/login' state={{from: location}} replace></Navigate>
 };
 

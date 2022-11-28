@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useSeller from '../../Hooks/useSeller';
 
 const SellerPrivateRoute = ({children}) => {
-   const {user, loading, googleLoading} = useContext(AuthContext)
+   const {user, loading, googleLoading, logOut} = useContext(AuthContext)
    const [isSeller, isSellerLoading] = useSeller(user?.email)
    const location = useLocation()
    if(loading || isSellerLoading || googleLoading){
@@ -14,6 +14,7 @@ const SellerPrivateRoute = ({children}) => {
    if(user && isSeller){
        return children
     }
+    logOut()
     return <Navigate to='/login' state={{from: location}} replace></Navigate>
 };
 
