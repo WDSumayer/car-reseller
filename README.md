@@ -11,6 +11,9 @@ live link: https://car-reseller-2bb1f.web.app/
 adminEmail: <ertugrul@gazi.com>
 adminPassword: <Ertugrul@1>
 
+adminEmail: ertugrul@gazi.com
+adminPassword: Ertugrul@1
+
 
 
 
