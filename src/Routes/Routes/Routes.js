@@ -35,7 +35,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/cars/brand/:id', element: <PrivateRoutes><Cars></Cars></PrivateRoutes>,
-                loader: ({params}) => fetch(`http://localhost:5000/cars/brand/${params.id}`)
+                loader: ({params}) => fetch(`https://car-reseller-server-wdsumayer.vercel.app/cars/brand/${params.id}`)
             },
             {
                 path: '/blog', element: <Blog></Blog>
@@ -49,7 +49,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/myOrders/payment/:id', element: <Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
+                loader: ({params}) => fetch(`https://car-reseller-server-wdsumayer.vercel.app/orders/${params.id}`)
             },
             {
                 path: '/myOrders/addProduct', element: <SellerPrivateRoute><AddProduct></AddProduct></SellerPrivateRoute>

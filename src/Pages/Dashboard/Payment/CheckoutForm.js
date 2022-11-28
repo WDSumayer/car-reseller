@@ -13,7 +13,7 @@ const CheckoutForm = ({order}) => {
     const {price, name, email, _id, car_id} = order
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://car-reseller-server-wdsumayer.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -74,7 +74,7 @@ const CheckoutForm = ({order}) => {
                 const payment = {
                     price, transactionId: paymentIntent.id, email, orderId: _id, car_id
                 }
-                fetch('http://localhost:5000/payments', {
+                fetch('https://car-reseller-server-wdsumayer.vercel.app/payments', {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'

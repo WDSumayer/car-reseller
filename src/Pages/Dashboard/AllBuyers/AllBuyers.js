@@ -10,7 +10,7 @@ const AllBuyers = () => {
         queryKey: ['buyers'], 
         queryFn: async () => {
           
-            const res = await fetch('http://localhost:5000/users/buyers', {
+            const res = await fetch('https://car-reseller-server-wdsumayer.vercel.app/users/buyers', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('Car-resel-Token')}`
                 }
@@ -28,7 +28,7 @@ const AllBuyers = () => {
     })
 
     const handleDeleteBuyers = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://car-reseller-server-wdsumayer.vercel.app/users/${id}`, {
             method: "DELETE"
         })
         .then(res => res.json())

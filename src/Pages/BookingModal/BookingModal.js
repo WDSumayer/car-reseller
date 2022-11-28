@@ -20,7 +20,7 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
         const orders ={
             name, email, product, price, phone,img,car_id: _id, status
         }
-        fetch(`http://localhost:5000/orders`, {
+        fetch(`https://car-reseller-server-wdsumayer.vercel.app/orders`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

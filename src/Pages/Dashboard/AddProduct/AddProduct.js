@@ -14,7 +14,7 @@ const AddProduct = () => {
     const navigate = useNavigate()
     const [brands, setBrands] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/categories`)
+        fetch(`https://car-reseller-server-wdsumayer.vercel.app/categories`)
         .then(res => res.json())
         .then(data => {
             setBrands(data)
@@ -63,7 +63,7 @@ const AddProduct = () => {
                         status: "Available"
                     }
 
-                    fetch('http://localhost:5000/cars', {
+                    fetch('https://car-reseller-server-wdsumayer.vercel.app/cars', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

@@ -42,7 +42,7 @@ const LogIn = () => {
    
     const savedUser = (name, email, role) => {
         const user = {name, email, role }
-        fetch(`http://localhost:5000/users/${email}`, {
+        fetch(`https://car-reseller-server-wdsumayer.vercel.app/users/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

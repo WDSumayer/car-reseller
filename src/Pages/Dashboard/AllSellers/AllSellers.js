@@ -11,7 +11,7 @@ const AllSellers = () => {
         queryKey: ['sellers'], 
         queryFn: async () => {
           
-            const res = await fetch('http://localhost:5000/users/sellers', {
+            const res = await fetch('https://car-reseller-server-wdsumayer.vercel.app/users/sellers', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('Car-resel-Token')}`
                 }
@@ -29,7 +29,7 @@ const AllSellers = () => {
     })
 
     const handleVerify = (id) => {
-        fetch(`http://localhost:5000/users/status/${id}`, {
+        fetch(`https://car-reseller-server-wdsumayer.vercel.app/users/status/${id}`, {
             method: 'PUT',
            
         })
@@ -41,7 +41,7 @@ const AllSellers = () => {
     }
 
     const handleDeleteSeller = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://car-reseller-server-wdsumayer.vercel.app/users/${id}`, {
             method: "DELETE"
         })
         .then(res => res.json())

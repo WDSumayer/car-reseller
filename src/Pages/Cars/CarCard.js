@@ -19,7 +19,7 @@ const CarCard = ({car, setBookingInfo}) => {
       queryKey: ['status', seller_email], 
       queryFn: async () => {
         
-          const res = await fetch(`http://localhost:5000/user/status/${seller_email}`)
+          const res = await fetch(`https://car-reseller-server-wdsumayer.vercel.app/user/status/${seller_email}`)
           const data = await res.json()
         
           return data

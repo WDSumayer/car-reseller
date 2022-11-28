@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeroSlider.css'
+import heroImg from '../../../assetes/img/blue-sport-sedan-parked-yard.jpg'
 
 const HeroSlider = () => {
     return (
@@ -30,7 +31,7 @@ const HeroSlider = () => {
   </div> 
   
 </div>
-<img src='https://i.ibb.co/z5S6jrv/blue-sport-sedan-parked-yard.jpg' alt='' className='slider-img'></img>
+<img src={heroImg} alt='' className='slider-img'></img>
         </div>
     );
 };

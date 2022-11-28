@@ -11,7 +11,7 @@ const MyProductCard = ({product, refetch}) => {
       const advgProduct = {
         img,price, productName, status, car_id: _id, email: seller_email, brand_id: category_id
       }
-      fetch('http://localhost:5000/addvertise', {
+      fetch('https://car-reseller-server-wdsumayer.vercel.app/addvertise', {
         method: 'PUT',
         headers: {
           'content-type': 'application/json'
@@ -30,7 +30,7 @@ const MyProductCard = ({product, refetch}) => {
 
     const handleDeleteCar = (product) => {
 
-      fetch(`http://localhost:5000/cars/${product._id}`, {
+      fetch(`https://car-reseller-server-wdsumayer.vercel.app/cars/${product._id}`, {
         method: 'DELETE',
       })
       .then(res => res.json())
