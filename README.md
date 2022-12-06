@@ -8,8 +8,6 @@ live link: https://car-reseller-2bb1f.web.app/
 4. Mongodb has been used as a database
 5. This is a single page application by react
 
-adminEmail: <ertugrul@gazi.com>
-adminPassword: <Ertugrul@1>
 
 
 

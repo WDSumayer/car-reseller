@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaCar } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
@@ -7,6 +7,7 @@ import './Categories.css'
 
 const Categories = () => {
 
+   
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {

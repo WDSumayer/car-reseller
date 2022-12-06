@@ -6,27 +6,31 @@ import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 
 import useSeller from '../Hooks/useSeller';
+import useUser from '../Hooks/useUser';
 import Header from '../Pages/Shared/Header/Header';
-
+import './DashboardLayout.css'
 const DashboardLayout = () => {
   const {user} = useContext(AuthContext)
   const [isSeller, isSellerLoading] = useSeller(user?.email)
   const [isAdmin, isAdminLoading] = useAdmin(user?.email)
+  const [ isUser, isUserLoading] = useUser(user?.email)
     const dashboardMenu = <>
-       <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders'>My Orders</Link></li>
+      {
+        isUser &&  <li className='das-menu-item'><Link className='rounded-none' to='/dashboard/myOrders'>My Orders</Link></li>
+      }
        
         {
           isSeller && 
        <>
-           <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders/myProducts'>My Products</Link></li>
-        <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders/addProduct'>Add A Products</Link></li>
+           <li className='das-menu-item'><Link to='/dashboard/myProducts'>My Products</Link></li>
+        <li className='das-menu-item'><Link to='/dashboard/addProduct'>Add A Products</Link></li>
        </>
         }
       {
         isAdmin &&
          <>
-         <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders/allSellers'>All Sellers</Link></li>
-          <li className='lg:bg-gray-100 mr-3'><Link to='/myOrders/allBuyers'>All Buyers</Link></li>
+         <li className='das-menu-item'><Link to='/dashboard/allSellers'>All Sellers</Link></li>
+          <li className='das-menu-item'><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
          </>
       }
 
@@ -38,40 +42,23 @@ const DashboardLayout = () => {
     return (
         <div>
             <Header></Header>
-            <div className="drawer max-w-[1440px] mx-auto py-24 px-2 h-auto">
-  <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" /> 
-  <div className="drawer-content flex flex-col px-3">
-  
-    <div className="w-full navbar flex justify-center mb-14">
-      <div className="flex-none lg:hidden">
-        <label htmlFor="dashboard-drawer" className="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </label>
-      </div> 
-      
-      <div className="flex-none hidden lg:block">
-        <ul className="menu menu-horizontal">
-          
-         {
-            dashboardMenu
-         }
-        </ul>
-      </div>
-    </div>
-    
+            <div className="drawer h-auto drawer-mobile">
+  <input id="dashboard" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content flex flex-col items-center justify-center pt-4 px-4 pb-36">
+   
     <Outlet></Outlet>
+    <label htmlFor="dashboard" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
   </div> 
   <div className="drawer-side">
-    <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> 
-    <ul className="menu p-4 mr-8 bg-white">
-     
+    <label htmlFor="dashboard" className="drawer-overlay"></label> 
+    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
      {
-        dashboardMenu
+      dashboardMenu
      }
-      
     </ul>
-    
+  
   </div>
+  
 </div>
         </div>
     );

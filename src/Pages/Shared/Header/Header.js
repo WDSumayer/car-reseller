@@ -13,10 +13,15 @@ const Header = () => {
     const menuItems = <>
         <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/'>Home</Link></li>
         <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/blog'>Blog</Link></li>
+        
+       
+       
+       
+       
         {
             user?.uid ?
                <>
-                     <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/myOrders'>Dashboard</Link></li>
+                     <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/dashboard'>Dashboard</Link></li>
                 <button className='btn border-none bg-[#ddd] text-black hover:bg-[#eee] text-lg rounded-sm' onClick={handleLogOut}>Logout</button>
                </>
                 :

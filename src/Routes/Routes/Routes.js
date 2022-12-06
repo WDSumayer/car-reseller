@@ -4,6 +4,7 @@ import Cars from "../../Pages/Cars/Cars";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import Dashborad from "../../Pages/Dashboard/Dashborad";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
@@ -42,26 +43,36 @@ const routes = createBrowserRouter([
             }
         ]
     },
+    // {
+    //     path: '/dashboard', element: <DashboardLayout></DashboardLayout>, children: [
+    //         {
+    //             path: '/dashboard', element: <Dashborad></Dashborad>
+    //         },
+    //         {
+    //             path: '/dashboard/myOrders', element: <MyOrders></MyOrders>
+    //         }
+    //     ]
+    // },
     {
-        path:'/myOrders', element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>, children: [
+        path:'/dashboard', element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>, children: [
             {
-                path: '/myOrders', element: <MyOrders></MyOrders>
+                path: '/dashboard/myOrders', element: <MyOrders></MyOrders>
             },
             {
-                path: '/myOrders/payment/:id', element: <Payment></Payment>,
+                path: '/dashboard/myOrders/payment/:id', element: <Payment></Payment>,
                 loader: ({params}) => fetch(`https://car-reseller-server-wdsumayer.vercel.app/orders/${params.id}`)
             },
             {
-                path: '/myOrders/addProduct', element: <SellerPrivateRoute><AddProduct></AddProduct></SellerPrivateRoute>
+                path: '/dashboard/addProduct', element: <SellerPrivateRoute><AddProduct></AddProduct></SellerPrivateRoute>
             },
             {
-                path: '/myOrders/myProducts', element: <SellerPrivateRoute><MyProducts></MyProducts></SellerPrivateRoute>
+                path: '/dashboard/myProducts', element: <SellerPrivateRoute><MyProducts></MyProducts></SellerPrivateRoute>
             },
             {
-                path: '/myOrders/allSellers', element: <AdminPrivateRoute><AllSellers></AllSellers></AdminPrivateRoute>
+                path: '/dashboard/allSellers', element: <AdminPrivateRoute><AllSellers></AllSellers></AdminPrivateRoute>
             },
             {
-                path: '/myOrders/allBuyers', element: <AdminPrivateRoute><AllBuyers></AllBuyers></AdminPrivateRoute>
+                path: '/dashboard/allBuyers', element: <AdminPrivateRoute><AllBuyers></AllBuyers></AdminPrivateRoute>
             }
         ]
     },

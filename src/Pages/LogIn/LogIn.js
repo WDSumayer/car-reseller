@@ -87,7 +87,7 @@ const LogIn = () => {
                             <label className="label">
                                 <span className="label-text text-lg">Email</span>
                             </label>
-                            <input {...register('email', { required: 'email is required' })} type="email" placeholder="email" className="input input-bordered rounded-sm h-auto py-3" />
+                            <input {...register('email', { required: 'email is required' })} type="email" placeholder="email" className={ errors.email || errorMessage ? 'input input-bordered border-red-600 rounded-sm h-auto py-3' : 'input input-bordered rounded-sm h-auto py-3'} />
                             {errors.email && <span className='text-red-500'>{errors.email?.message}</span>}
 
                         </div>
@@ -100,7 +100,7 @@ const LogIn = () => {
                                 required: 'password is required',
                                 minLength: { value: 6, message: "must be at least 6 character" },
                                 pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'password pattern must be strong' }
-                            })} type="password" placeholder="password" className="input input-bordered rounded-sm h-auto py-3" />
+                            })} type="password" placeholder="password" className={ errors.password || errorMessage ? 'input input-bordered border-red-600 rounded-sm h-auto py-3' : 'input input-bordered rounded-sm h-auto py-3'} />
                             {errors.password && <span className='text-red-500'>{errors.password?.message}</span>}
                         </div>
                             

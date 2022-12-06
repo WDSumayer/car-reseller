@@ -6,10 +6,8 @@ import MyOrders from './MyOrders/MyOrders';
 const Dashborad = () => {
     return (
         <div>
-            <h1>this is dashboard</h1>
-            {/* <MyOrders></MyOrders>
-            <AllSellers></AllSellers>
-            <AllBuyers></AllBuyers> */}
+           <MyOrders></MyOrders>
+          
         </div>
     );
 };

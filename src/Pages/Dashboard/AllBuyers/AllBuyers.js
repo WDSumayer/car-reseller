@@ -46,7 +46,7 @@ if(isLoading){
     return <Loading></Loading>
 }
     return (
-        <div>
+        <div className='w-full'>
         <div className="overflow-x-auto">
 <table className="table seller-table w-full">
  
