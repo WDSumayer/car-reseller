@@ -52,16 +52,16 @@ if(isLoading){
  
  <thead>
    <tr>
-     <th className='bg-primary py-6 text-white'></th>
-     <th className='bg-primary py-6 text-white'>Name</th>
-     <th className='bg-primary py-6 text-white'>Email</th>
-     <th className='bg-primary py-6 text-white rounded-none'>Action</th>
+     <th></th>
+     <th>Name</th>
+     <th>Email</th>
+     <th>Action</th>
    </tr>
  </thead>
  <tbody>
    {
-     buyers.map((buyer, i) =>  <tr className={buyers.indexOf(buyer) % 2 !== 0 ? "tableActive" : 'undefined'} key={buyer._id}>
-     <th className='bg-transparent'>{i+1}</th>
+     buyers.map((buyer, i) =>  <tr className={buyers.indexOf(buyer) % 2 !== 0 ? "active" : 'undefined'} key={buyer._id}>
+     <th>{i+1}</th>
      <td>{buyer.name}</td>
      <td>{buyer.email}</td>
      <td><button onClick={() => handleDeleteBuyers(buyer._id)} className='btn btn-sm rounded-sm btn-error text-white'>Delete</button></td>

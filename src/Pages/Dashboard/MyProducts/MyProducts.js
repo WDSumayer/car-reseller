@@ -33,7 +33,7 @@ const MyProducts = () => {
         <div>
            {
                 products.length ? 
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-14'>
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-9'>
                 {
                     products.map(product => <MyProductCard key={product._id} product={product} refetch={refetch}></MyProductCard>)
                 }

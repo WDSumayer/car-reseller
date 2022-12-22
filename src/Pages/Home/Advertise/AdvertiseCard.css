@@ -1,0 +1,4 @@
+.card.image-full:before {
+    background-color: #000;
+    opacity: .7;
+}

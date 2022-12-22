@@ -11,7 +11,7 @@ import useTitle from '../../Hooks/useTitle';
 
 const SignUp = () => {
     
-    const { createUser, updateUser, googleSignIn, loading,setLoading, googleLoading } = useContext(AuthContext)
+    const { createUser, updateUser, googleSignIn, loading,setLoading, googleLoading,setGoogleLoading } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
     const [createdUserEmail, setCreatedUserEmail] = useState('')
@@ -36,7 +36,10 @@ const SignUp = () => {
             console.log(user.displayName, user.email)
             savedUser(user.displayName, user.email, "User")
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            setGoogleLoading(false)
+        })
     }
 
     const handleSignUp = (data) => {
@@ -127,7 +130,7 @@ const SignUp = () => {
                             errorMessage && <p className='text-red-500'>{errorMessage}</p>
                         }
                         
-                        <button type='submit' className='btn btn-primary w-full mt-7 rounded-sm h-auto py-3'>{loading ? <SmallLoading></SmallLoading> : "Sign up"}</button>
+                        <button type='submit' className='btn bg-teal-800 hover:bg-teal-800 border-none hover:border-none w-full mt-7 rounded-sm h-auto py-3'>{loading ? <SmallLoading></SmallLoading> : "Sign up"}</button>
                        
                         <p className='mt-1'>Already have an account? Please <Link className='text-primary' to='/login'>LogIn</Link></p>
                     </form>

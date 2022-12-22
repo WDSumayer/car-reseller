@@ -11,8 +11,8 @@ const Header = () => {
         .catch(err => console.log(err))
     }
     const menuItems = <>
-        <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/'>Home</Link></li>
-        <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/blog'>Blog</Link></li>
+        <li className='flex'><Link className='px-4 py-3 text-base font-medium uppercase hover:text-teal-800 ease-linear duration-300' to='/'>Home</Link></li>
+        <li className='flex'><Link className='px-4 py-3 text-base font-medium uppercase hover:text-teal-800 ease-linear duration-300' to='/blog'>Blog</Link></li>
         
        
        
@@ -21,13 +21,13 @@ const Header = () => {
         {
             user?.uid ?
                <>
-                     <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/dashboard'>Dashboard</Link></li>
-                <button className='btn border-none bg-[#ddd] text-black hover:bg-[#eee] text-lg rounded-sm' onClick={handleLogOut}>Logout</button>
+                     <li className='flex'><Link className='px-4 py-3 text-base font-medium uppercase hover:text-teal-800 ease-linear duration-300' to='/dashboard'>Dashboard</Link></li>
+                <button className='btn border border-teal-800 bg-teal-800 text-white hover:bg-white hover:text-teal-800 hover:border-teal-800 text-lg rounded-sm' onClick={handleLogOut}>Logout</button>
                </>
                 :
                 <>
-                    <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/login'>Login</Link></li>
-                    <li className='flex'><Link className='px-4 py-3 text-base font-normal uppercase hover:text-primary ease-linear duration-300' to='/signup'>Signup</Link></li>
+                    <li className='flex'><Link className='px-4 py-3 text-base font-medium uppercase hover:text-teal-800 ease-linear duration-300' to='/login'>Login</Link></li>
+                    <li className='flex'><Link className='px-4 py-3 text-base font-medium uppercase hover:text-teal-800 ease-linear duration-300' to='/signup'>Signup</Link></li>
                 </>
         }
 
@@ -47,7 +47,7 @@ const Header = () => {
                                 }
                             </ul>
                         </div>
-                        <Link to='/' className="btn h-auto btn-ghost normal-case text-4xl hover:bg-white font-black">Car<span className='text-primary font-semibold'>Reseller</span></Link>
+                        <Link to='/' className="btn h-auto btn-ghost normal-case text-4xl hover:bg-white font-black">Car<span className='text-teal-800'>Reseller</span></Link>
                     </div>
                     <div className="navbar-end hidden lg:flex items-center">
                         <ul className="menu-horizontal p-0">

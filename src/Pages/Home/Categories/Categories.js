@@ -2,12 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { FaCar } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
+import Button from '../../../components/Button/Button';
 import Loading from '../../../components/Loading/Loading';
+import SmallLoading from '../../../components/SmallLoading/SmallLoading';
 import './Categories.css'
+import CategoriesCard from './CategoriesCard/CategoriesCard';
 
 const Categories = () => {
+  
+   const [loading, setLoading] = useState(false)
 
-   
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
@@ -17,6 +21,8 @@ const Categories = () => {
             return data;
         }
     })
+
+
 if(isLoading){
     return <Loading></Loading>
 }
@@ -28,10 +34,10 @@ if(isLoading){
             {
                 categories.map(category => 
                <Link to={`/cars/brand/${category._id}`}>
-                     <button key={category._id} className='btn brand-btn'>
-                    <FaCar className='mr-5 text-primary'></FaCar>
-                    {category.brand_name}
-                </button>
+                   
+                {/* <Button key={category._id} brand_name={category.brand_name}></Button> */}
+                
+                <CategoriesCard key={category._id} category={category}></CategoriesCard>
                </Link>)
             }
         </div>

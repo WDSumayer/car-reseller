@@ -11,13 +11,13 @@ const Home = () => {
     return (
         <div>
             <HeroSlider></HeroSlider>
-            <div className='max-w-[1440px] mx-auto px-2'>
+            <div className='lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1440px] mx-auto px-2'>
             <Advertise></Advertise>
              <Categories></Categories>
             
              
-            </div>
             <Gallery></Gallery>
+            </div>
         </div>
     );
 };

@@ -12,7 +12,7 @@ const useAdmin = (email) => {
                 setIsAdminLoading(false)
             })
         }
-    }, [email])
+    }, [email]);
     return [isAdmin, isAdminLoading]
 
 }

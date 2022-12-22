@@ -80,7 +80,7 @@ const AddProduct = () => {
                     .then(result => {
                         console.log(result)
                         setLoading(false)
-                        navigate('/myOrders/myProducts')
+                        navigate('/dashboard/myProducts')
                     })
                 }
             })
@@ -97,56 +97,56 @@ const AddProduct = () => {
             <form onSubmit={handleSubmit(handleAddProduct)}>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Your Name</span>
+                        <span className="label-text text-lg">Your Name</span>
                     </label>
                     <input type="text" {...register("name", { required: 'name is required' })} defaultValue={user?.displayName} readOnly className="input input-bordered rounded-sm h-auto py-3" />
                     {errors.name && <p className='text-red-500'>{errors.name?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Your Email</span>
+                        <span className="label-text text-lg">Your Email</span>
                     </label>
                     <input type="email" {...register("email", { required: 'email is required' })} defaultValue={user?.email} readOnly className="input input-bordered rounded-sm h-auto py-3" />
                     {errors.email && <p className='text-red-500'>{errors.email?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Your Product Name</span>
+                        <span className="label-text text-lg">Your Product Name</span>
                     </label>
                     <input type="text" {...register("productName", { required: 'productName is required' })} className="input input-bordered rounded-sm h-auto py-3" />
                     {errors.productName && <p className='text-red-500'>{errors.productName?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">About Your Product</span>
+                        <span className="label-text text-lg">About Your Product</span>
                     </label>
                     <textarea {...register("description", { required: 'description is required' })} className="textarea textarea-bordered rounded-sm h-auto py-3"></textarea>
                     {errors.description && <p className='text-red-500'>{errors.description?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Re-Sale Price</span>
+                        <span className="label-text text-lg">Re-Sale Price</span>
                     </label>
                     <input type="text" {...register("price", { required: 'price is required' })} className="input input-bordered rounded-sm h-auto py-3"  />
                     {errors.price && <p className='text-red-500'>{errors.price?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Original Price</span>
+                        <span className="label-text text-lg">Original Price</span>
                     </label>
                     <input type="text" {...register("oldPrice", { required: 'oldPrice is required' })} className="input input-bordered rounded-sm h-auto py-3" />
                     {errors.oldPrice && <p className='text-red-500'>{errors.oldPrice?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Years of Use</span>
+                        <span className="label-text text-lg">Years of Use</span>
                     </label>
                     <input type="text" {...register("usedYears", { required: 'usedYears is required' })} className="input input-bordered rounded-sm h-auto py-3" />
                     {errors.usedYears && <p className='text-red-500'>{errors.usedYears?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Brand Name</span>
+                        <span className="label-text text-lg">Brand Name</span>
                     </label>
                     <select {...register("brandName")} className="select select-bordered w-full rounded-sm h-auto py-3">
                     <option disabled selected>Choose Brand Name</option>
@@ -157,7 +157,7 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Condition</span>
+                        <span className="label-text text-lg">Condition</span>
                     </label>
                     <select {...register("condition")} className="select select-bordered w-full rounded-sm h-auto py-3">
                         <option selected>Excellent</option>
@@ -168,14 +168,14 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Location</span>
+                        <span className="label-text text-lg">Location</span>
                     </label>
                     <input type="text" {...register("location", { required: 'location is required' })} className="input input-bordered rounded-sm h-auto py-3" />
                     {errors.location && <p className='text-red-500'>{errors.location?.message}</p>}
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Product Photo</span>
+                        <span className="label-text text-lg">Product Photo</span>
                     </label>
                     <input type="file" {...register("image", { required: 'image is required' })} className="input input-bordered rounded-sm h-auto py-3" />
                     {errors.image && <p className='text-red-500'>{errors.image?.message}</p>}
@@ -183,7 +183,7 @@ const AddProduct = () => {
 
                
 
-                <button type='submit' className='btn btn-primary w-full rounded-sm h-auto py-3 mt-5 text-lg'>{loading ? <SmallLoading></SmallLoading> : "Add"}</button>
+                <button type='submit' className='btn border-none hover:border-none bg-teal-800 hover:bg-teal-800 text-center w-full rounded-sm h-auto py-3 mt-5 text-lg'>{loading ? <SmallLoading></SmallLoading> : "Add"}</button>
                 
 
             </form>

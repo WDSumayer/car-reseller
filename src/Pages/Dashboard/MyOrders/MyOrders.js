@@ -7,9 +7,10 @@ import MyOrderCard from './MyOrderCard';
 
 const MyOrders = () => {
     const {user, logOut} = useContext(AuthContext)
+
    
     useTitle('Dashboard')
-    const {data:orders = [], isLoading} = useQuery({ 
+    const {data:orders = [], isLoading, refetch} = useQuery({ 
         queryKey: ['orders', user?.email], 
         queryFn: async () => {
           
@@ -34,19 +35,25 @@ const MyOrders = () => {
     }
 
     return (
-       <div className='px-2 md:px-7 pb-20'>
-        {
-            orders.length ?
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-14'>
+      <div className='w-full'>
+        
+          
+            <div className='px-2 md:px-7'>
             {
-                orders.map(order => <MyOrderCard key={order._id} order={order}></MyOrderCard>)
+                orders.length ?
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-9'>
+                { 
+                    orders.map(order => <MyOrderCard key={order._id} order={order} refetch={refetch}></MyOrderCard>)
+                }
+                
+            </div>
+            :
+            <h1 className='text-center text-4xl pt-5'>You have no orders here......</h1>
             }
-            
-        </div>
-        :
-        <h1 className='text-center text-4xl pt-5'>You have no orders here......</h1>
-        }
-       </div>
+           </div>
+        
+        
+      </div>
     );
 };
 

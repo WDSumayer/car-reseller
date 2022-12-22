@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import useTitle from '../../Hooks/useTitle';
 
 const LogIn = () => {
-    const {logIn, googleSignIn, loading,setLoading, googleLoading} = useContext(AuthContext)
+    const {logIn, googleSignIn, loading,setLoading, googleLoading, setGoogleLoading} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [errorMessage, setErrorMessage] = useState('')
     const[loggedUserEmail, setLoggedUserEmail] = useState('')
@@ -37,7 +37,10 @@ const LogIn = () => {
             savedUser(user.displayName, user.email, "User")
             console.log(user)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            setGoogleLoading(false)
+        })
     }
    
     const savedUser = (name, email, role) => {
@@ -109,7 +112,7 @@ const LogIn = () => {
                             errorMessage && <p className='text-red-500'>{errorMessage}</p>
                         }
                         
-                        <button type='submit' className='btn btn-primary w-full mt-7 rounded-sm h-auto py-3'>{loading ? <SmallLoading></SmallLoading> : 'Log in'}</button>
+                        <button type='submit' className='btn bg-teal-800 hover:bg-teal-800 border-none hover:border-none w-full mt-7 rounded-sm h-auto py-3'>{loading ? <SmallLoading></SmallLoading> : 'Log in'}</button>
                         
                         <p className='mt-1'>Don't have any account? Create account <Link className='text-primary' to='/signup'>SignUp</Link></p>
                     </form>

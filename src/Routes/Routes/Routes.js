@@ -1,12 +1,14 @@
 import DashboardLayout from "../../layout/DashboardLayout";
 import Blog from "../../Pages/Blog/Blog";
 import Cars from "../../Pages/Cars/Cars";
+import AddBrand from "../../Pages/Dashboard/AddBrand/AddBrand";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import Dashborad from "../../Pages/Dashboard/Dashborad";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import MyWishes from "../../Pages/Dashboard/MyWishes/MyWishes";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
@@ -35,12 +37,14 @@ const routes = createBrowserRouter([
                 path: '/signup', element: <SignUp></SignUp>
             },
             {
-                path: '/cars/brand/:id', element: <PrivateRoutes><Cars></Cars></PrivateRoutes>,
-                loader: ({params}) => fetch(`https://car-reseller-server-wdsumayer.vercel.app/cars/brand/${params.id}`)
+                path: '/cars/brand/:id', 
+                loader: ({params}) => fetch(`https://car-reseller-server-wdsumayer.vercel.app/cars/brand/${params.id}`),
+                element: <PrivateRoutes><Cars></Cars></PrivateRoutes>
             },
             {
                 path: '/blog', element: <Blog></Blog>
             }
+            
         ]
     },
     // {
@@ -56,7 +60,13 @@ const routes = createBrowserRouter([
     {
         path:'/dashboard', element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>, children: [
             {
+                path: '/dashboard', element: <Dashborad></Dashborad>
+            },
+            {
                 path: '/dashboard/myOrders', element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/myWishes', element: <MyWishes></MyWishes>
             },
             {
                 path: '/dashboard/myOrders/payment/:id', element: <Payment></Payment>,
@@ -73,6 +83,9 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/allBuyers', element: <AdminPrivateRoute><AllBuyers></AllBuyers></AdminPrivateRoute>
+            },
+            {
+                path: '/dashboard/addBrand', element: <AdminPrivateRoute><AddBrand></AddBrand></AdminPrivateRoute>
             }
         ]
     },

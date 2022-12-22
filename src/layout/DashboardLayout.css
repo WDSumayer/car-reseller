@@ -2,12 +2,15 @@
     border-radius:0;
 }
 .das-menu-item a {
-    background-color: #eee;
-    color:#444;
+    background-color: transparent;
+    color:#fff;
     border-radius:0 !important;
-    border-bottom:1px solid #ddd;
+    
 }
 .das-menu-item a:hover {
-    background-color: #570DF8;
-    color: #fff;
+    background-color: #333333;
+   
+}
+a.active-btn{
+    background-color: #333333;
 }

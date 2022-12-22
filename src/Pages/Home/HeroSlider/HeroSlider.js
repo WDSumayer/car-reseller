@@ -1,6 +1,7 @@
 import React from 'react';
 import './HeroSlider.css'
-import heroImg from '../../../assetes/img/blue-sport-sedan-parked-yard.jpg'
+// import heroImg from '../../../assetes/img/blue-sport-sedan-parked-yard.jpg'
+import heroImg from '../../../assetes/img/carbg.jpg'
 
 const HeroSlider = () => {
     return (
