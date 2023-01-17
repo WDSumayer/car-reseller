@@ -8,8 +8,8 @@ const CategoriesCard = ({category}) => {
     const [loading, setLoading] = useState(false)
     
     return (
-        <div onClick={() => setLoading(true)} className='brand-name rounded-2xl'>
-            <div className='brand-overlay'><p className='text-lg lg:text-xl xl:text-4xl'>
+        <div onClick={() => setLoading(true)} className='brand-name rounded-xl'>
+            <div className='brand-overlay'><p className='text-lg lg:text-xl xl:text-2xl'>
                 {
                     loading ? <><SmallLoading></SmallLoading><span className='text-lg ml-3'>working...</span></> : brand_name
                 }

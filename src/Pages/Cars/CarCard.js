@@ -15,7 +15,7 @@ const CarCard = ({ car, setBookingInfo }) => {
   const { img, name, condition, seller_name, brand_name, location, resale_price, original_price, years_of_use, posted_date, seller_email, _id, status: product_status } = car
   const [isAdmin] = useAdmin(user?.email)
   const [isSeller] = useSeller(user?.email)
-  const [isUser] = useUser(user?.email)
+  const [ isUser, isUserLoading] = useUser(user?.email)
 
   const { data: status = [], isLoading } = useQuery({
     queryKey: ['status', seller_email],
@@ -59,7 +59,9 @@ const CarCard = ({ car, setBookingInfo }) => {
       })
   }
 
-
+  if(isUserLoading) {
+    return <Loading></Loading>
+  }
 
 
   return (
@@ -100,8 +102,12 @@ const CarCard = ({ car, setBookingInfo }) => {
           {
             isUser &&
             <>
-              <label onClick={() => setBookingInfo(car)} htmlFor="modalBooking" className="text-center text-white cursor-pointer w-3/5 bg-teal-800 rounded-none h-auto py-3">Book Now</label>
+            
+           
+                 <label onClick={() => setBookingInfo(car)} htmlFor="modalBooking" className="text-center text-white cursor-pointer w-3/5 bg-teal-800 rounded-none h-auto py-3">Book Now</label>
               <button onClick={handleWishCar} className="flex justify-center items-center text-2xl w-1/5 border border-slate-700 bg-white text-slate-700 rounded-none h-auto py-3 ml-1"><FaHeart></FaHeart></button>
+            
+             
             </>
           }
 

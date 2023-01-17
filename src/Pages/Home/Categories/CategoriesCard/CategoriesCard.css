@@ -1,56 +1,72 @@
-.brand-name{
+.brand-name {
     position: relative;
     overflow: hidden;
 }
-.brand-overlay{
-   
-    position: absolute;
-    width:100%;
-    height: 100%;
-    left:0;
-    top:0; 
-    visibility: hidden;
 
-transition: .3s;
-opacity: 0; 
-color:#fff;
-z-index: 1;
+.brand-overlay {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    visibility: visible;
+    background: transparent;
+    border-radius: 16px;
+
+    color: #fff;
+    z-index: 1;
 }
-.brand-overlay::after{
-   
-position: absolute;
-content:'';
-width:100%;
-height: 100%;
-left:0;
-top:0;
-background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 50%, rgba(0,0,0,0.5998774509803921) 100%);
-opacity: .8;
-z-index: -1;
+
+.brand-overlay::after {
+
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    background: rgb(0,0,0);
+background: linear-gradient(18deg, rgba(0,0,0,1) 21%, rgba(0,0,0,0.577468487394958) 100%);
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+    z-index: -1;
 }
-.brand-name:hover .brand-overlay{
-   
-    opacity: 1;
+
+
+
+.brand-name:hover .brand-overlay::after {
+
+    opacity: .8;
     visibility: visible;
 }
+
+
+
 .brand-overlay p {
     position: absolute;
-    left:19px;
-    bottom:2px;
-   transition: .3s;
-    background:transparent;
+    left: 0;
+    bottom: 0;
+
+
+    transition: .3s;
+    background: transparent;
     padding: 11px 19px;
-    font-weight: 700;
-    color:#fff;
+    font-weight: 900;
+    color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
     opacity: 0;
     visibility: hidden;
+
+
+
 }
-.brand-name:hover .brand-overlay p{
-    left:19px;
-    bottom:19px;
+
+.brand-name:hover .brand-overlay p {
+
+    transform: translate(15px, -15px);
     opacity: 1;
     visibility: visible;
 }

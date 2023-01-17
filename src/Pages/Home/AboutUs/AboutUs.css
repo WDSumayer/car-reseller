@@ -1,0 +1,15 @@
+.about-content h1{
+    padding:23px 0;
+    margin-bottom:19px;
+    position: relative;
+}
+.about-content h1::after{
+    position:absolute;
+    content: "";
+    left:0;
+    bottom: 0;
+    height: 5px;
+    width: 10%;
+    background-color: #134E4A;
+    opacity: 1;
+}

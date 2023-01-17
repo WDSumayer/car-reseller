@@ -35,7 +35,7 @@ if(isLoading){
 
     return (
         <div className='w-full'>
-         <div className='px-2 md:px-7'>
+         <div className='px-2 py-9 md:px-7'>
         {
             wishes.length ?
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-9'>

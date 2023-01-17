@@ -97,7 +97,7 @@ const WishBookingModal = ({ bookingInfo, setBookingInfo, refetch }) => {
                                     </label>
                                     <input type="text" name='phone' className="input input-bordered" />
                                 </div>
-                                <input type='submit' value='submit' className='btn bg-[#115E59] hover:bg-[#115E59] w-full my-5'></input>
+                                <input type='submit' value='Book' className='btn bg-[#115E59] hover:bg-[#115E59] w-full my-5'></input>
                                 
                             </form>
            

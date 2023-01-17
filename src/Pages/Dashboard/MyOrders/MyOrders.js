@@ -38,12 +38,12 @@ const MyOrders = () => {
       <div className='w-full'>
         
           
-            <div className='px-2 md:px-7'>
+            <div className='px-2 py-9 md:px-7'>
             {
                 orders.length ?
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-9'>
                 { 
-                    orders.map(order => <MyOrderCard key={order._id} order={order} refetch={refetch}></MyOrderCard>)
+                    orders.map(order => <MyOrderCard key={order._id} order={order} refetch={refetch} isLoading={isLoading}></MyOrderCard>)
                 }
                 
             </div>

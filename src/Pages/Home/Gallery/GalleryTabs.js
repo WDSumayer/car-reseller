@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import SmallLoading from '../../../components/SmallLoading/SmallLoading';
 import GalleryContent from './GalleryContent';
 import './GalleryTabs.css'
+
+
 
 const GalleryTabs = () => {
 
@@ -17,11 +20,13 @@ const GalleryTabs = () => {
 
     const [brand, setBrand] = useState('All')
     const [count, setCount] = useState(0)
+    const [loading, setLoading] = useState(false)
 
     const btns = <>
       <button className={count === 0 ? 'tab-btn active-btn' : 'tab-btn'} onClick={() => {
         setBrand('All')
         setCount(0)
+        setLoading(true)
       }}>All</button>
         {
              
@@ -29,6 +34,7 @@ const GalleryTabs = () => {
                 brands.map((brand,i) => <button className={count === i+1 ? 'tab-btn active-btn uppercase' : 'tab-btn uppercase'} onClick={() => {
                   setBrand(brand)
                   setCount(i + 1)
+                  setLoading(true)
                 }}>{brand.brand_name}</button>)
                
         }
@@ -42,7 +48,7 @@ const GalleryTabs = () => {
           </div>
           <div className='w-full'>
 
-          <GalleryContent count={count} brand={brand}></GalleryContent>
+          <GalleryContent count={count} brand={brand} setLoading={setLoading} loading={loading}></GalleryContent>
           </div>
         </div>
           

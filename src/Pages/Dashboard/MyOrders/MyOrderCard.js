@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom';
 import SmallLoading from '../../../components/SmallLoading/SmallLoading';
 import './MyOrderCard.css'
 import { FaTrash } from "react-icons/fa";
+import Loading from '../../../components/Loading/Loading';
+import useUser from '../../../Hooks/useUser';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
-const MyOrderCard = ({order,refetch}) => {
+const MyOrderCard = ({order,refetch,isLoading}) => {
     const {img,product,price, status, _id} = order
-    
+   
     const [loading, setLoading] = useState(false)
-
+   
 
   const orderDelete = (_id) => {
     fetch(`https://car-reseller-server-wdsumayer.vercel.app/order/${_id}`, {

@@ -1,0 +1,11 @@
+.mobile-menu li:hover{
+    background-color: #115E59;
+    
+
+}
+.mobile-menu li a{
+    transition:0s;
+}
+.mobile-menu li:hover a{
+    color:#fff;
+}

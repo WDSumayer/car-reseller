@@ -56,7 +56,7 @@ const DashboardLayout = () => {
          
          </>
       }
-   <label htmlFor="dashboard" className="btn btn-primary drawer-button lg:hidden">Close drawer</label>
+   <label htmlFor="dashboard" className="btn border-none text-lg bg-teal-800 hover:bg-teal-800 w-full h-auto rounded-none mb-5 text-white mt-11 drawer-button lg:hidden">Close drawer</label>
     </>
 
     if(isAdminLoading || isSellerLoading) {
@@ -67,15 +67,15 @@ const DashboardLayout = () => {
             {/* <Header></Header> */}
             <div className="drawer h-vh-full drawer-mobile">
   <input id="dashboard" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content flex flex-col pt-4 px-4 pb-36">
+  <div className="drawer-content flex flex-col pt-4 px-4 md:px-20 pb-36">
    
     <Outlet></Outlet>
-    <label htmlFor="dashboard" className="btn mt-11 btn-primary drawer-button lg:hidden">Open drawer</label>
+    <label htmlFor="dashboard" className="btn border-none text-lg bg-teal-800 hover:bg-teal-800 w-full h-auto rounded-none mb-5 text-white mt-7 drawer-button lg:hidden">Open drawer</label>
   </div> 
   <div className="drawer-side">
     
     <label htmlFor="dashboard" className="drawer-overlay"></label> 
-    <ul className="menu p-4 w-80 bg-[#1E1E1E] text-base-content">
+    <ul className="menu p-4 w-64 md:w-80 bg-[#1E1E1E] text-base-content">
      {
       dashboardMenu
      }
